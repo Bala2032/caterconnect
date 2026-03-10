@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Register Worker - CaterConnect</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .float-animation {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-left {
+        animation: slideInLeft 0.5s ease-out forwards;
+    }
+    
+    .input-field {
+        transition: all 0.3s ease;
+    }
+    
+    .input-field:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    }
+    
+    .submit-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+    }
+    
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-5px);
+    }
+    
+    .benefit-card {
+        transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+        transform: translateY(-8px) scale(1.05);
+    }
+</style>
+
+</head>
+
+<body class="bg-gray-100">
+
+<nav class="bg-white shadow-md fixed w-full z-50">
+
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+<h1 class="text-2xl font-bold text-orange-500 flex items-center">
+    <span class="text-3xl mr-2">🍽️</span> CaterConnect
+</h1>
+
+<div class="space-x-6">
+
+<a href="/" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Home</a>
+
+<a href="/hire" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Hire Workers</a>
+
+<a href="/register_worker" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Join as Worker</a>
+
+<a href="/workers" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Workers</a>
+
+<a href="/bookings" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Bookings</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-28 pb-8 text-center bg-gradient-to-r from-orange-400 to-orange-500 text-white">
+    
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="flex justify-center mb-6 fade-in-up">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=200" alt="Chef" class="rounded-full w-24 h-24 object-cover border-4 border-white shadow-lg">
+        </div>
+        <h1 class="text-4xl font-bold mb-4 fade-in-up delay-100">Join as Worker</h1>
+        <p class="text-lg fade-in-up delay-200">Start earning with flexible catering jobs</p>
+    </div>
+    
+</section>
+
+<!-- Decorative elements -->
+<div class="relative">
+    <div class="absolute -top-16 left-16 float-animation opacity-20">
+        <span class="text-6xl">👨‍🍳</span>
+    </div>
+    <div class="absolute -top-12 right-16 float-animation opacity-20" style="animation-delay: 1s;">
+        <span class="text-5xl">🍴</span>
+    </div>
+    <div class="absolute top-32 left-1/4 float-animation opacity-20" style="animation-delay: 2s;">
+        <span class="text-4xl">🎂</span>
+    </div>
+</div>
+
+<section class="flex justify-center items-center min-h-auto py-16">
+
+<div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md card-hover fade-in-up">
+
+<div class="text-center mb-8">
+    <div class="inline-block p-4 bg-orange-100 rounded-full mb-4">
+        <span class="text-4xl">📝</span>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-800">
+        Worker Registration
+    </h2>
+    <p class="text-gray-500 mt-2">Create your profile</p>
+</div>
+
+<form method="POST" action="/register_worker" class="space-y-5">
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
+    <input type="text" name="name" placeholder="Your full name"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+    required>
+    <span class="absolute right-4 top-12 text-gray-400">👤</span>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+    <input type="text" name="phone" placeholder="Your phone number"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+    required>
+    <span class="absolute right-4 top-12 text-gray-400">📱</span>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Service Area</label>
+    <input type="text" name="area" placeholder="e.g., Tambaram, Porur, Anna Nagar..."
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+    <span class="absolute right-4 top-12 text-gray-400">📍</span>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Experience</label>
+    <input type="text" name="experience" placeholder="e.g., 2 years in hotel catering"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+    <span class="absolute right-4 top-12 text-gray-400">💼</span>
+</div>
+
+<button type="submit" class="submit-btn w-full bg-orange-500 text-white p-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-all duration-300">
+    ✅ Register Now
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- Benefits Section -->
+<section class="max-w-6xl mx-auto py-12 px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Benefits of Joining</h2>
+    
+    <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-white rounded-xl shadow benefit-card slide-in-left">
+            <div class="text-5xl mb-4">💰</div>
+            <h3 class="text-lg font-bold mb-2">Good Earning</h3>
+            <p class="text-gray-600 text-sm">Competitive daily wages</p>
+        </div>
+        
+        <div class="text-center p-6 bg-white rounded-xl shadow benefit-card slide-in-left" style="animation-delay: 0.1s;">
+            <div class="text-5xl mb-4">📅</div>
+            <h3 class="text-lg font-bold mb-2">Flexible Hours</h3>
+            <p class="text-gray-600 text-sm">Work as per your schedule</p>
+        </div>
+        
+        <div class="text-center p-6 bg-white rounded-xl shadow benefit-card slide-in-left" style="animation-delay: 0.2s;">
+            <div class="text-5xl mb-4">🎉</div>
+            <h3 class="text-lg font-bold mb-2">Event Variety</h3>
+            <p class="text-gray-600 text-sm">Weddings, parties & more</p>
+        </div>
+        
+        <div class="text-center p-6 bg-white rounded-xl shadow benefit-card slide-in-left" style="animation-delay: 0.3s;">
+            <div class="text-5xl mb-4">🏆</div>
+            <h3 class="text-lg font-bold mb-2">Build Career</h3>
+            <p class="text-gray-600 text-sm">Grow in catering industry</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="bg-gray-200 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">What Workers Say</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow card-hover">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Worker" class="w-12 h-12 rounded-full object-cover">
+                    <div class="ml-3">
+                        <h4 class="font-bold">Rajesh Kumar</h4>
+                        <p class="text-sm text-gray-500">2 years experience</p>
+                    </div>
+                </div>
+                <p class="text-gray-600">"Great platform! I get regular work and good payment."</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow card-hover">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Worker" class="w-12 h-12 rounded-full object-cover">
+                    <div class="ml-3">
+                        <h4 class="font-bold">Priya Sharma</h4>
+                        <p class="text-sm text-gray-500">1 year experience</p>
+                    </div>
+                </div>
+                <p class="text-gray-600">"Flexible timing helps me balance studies and work."</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow card-hover">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Worker" class="w-12 h-12 rounded-full object-cover">
+                    <div class="ml-3">
+                        <h4 class="font-bold">Mohammed Ali</h4>
+                        <p class="text-sm text-gray-500">3 years experience</p>
+                    </div>
+                </div>
+                <p class="text-gray-600">"Best catering job platform in the city!"</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-900 text-gray-300 text-center py-6">
+
+<div class="flex justify-center space-x-6 mb-4">
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">📘</a>
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">📸</a>
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">🐦</a>
+</div>
+
+<p>© 2026 CaterConnect | All Rights Reserved</p>
+
+</footer>
+
+</body>
+
+</html>
+
