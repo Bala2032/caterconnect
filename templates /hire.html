@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hire Workers - CaterConnect</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .float-animation {
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in {
+        animation: slideIn 0.5s ease-out forwards;
+    }
+    
+    .input-field {
+        transition: all 0.3s ease;
+    }
+    
+    .input-field:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    }
+    
+    @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(249, 115, 22, 0); }
+    }
+    
+    .submit-btn:hover {
+        animation: pulse-glow 2s infinite;
+    }
+    
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+</head>
+
+<body class="bg-gray-100">
+
+<nav class="bg-white shadow-md fixed w-full z-50">
+
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+<h1 class="text-2xl font-bold text-orange-500 flex items-center">
+    <span class="text-3xl mr-2">🍽️</span> CaterConnect
+</h1>
+
+<div class="space-x-6">
+
+<a href="/" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Home</a>
+
+<a href="/hire" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Hire Workers</a>
+
+<a href="/register_worker" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Join as Worker</a>
+
+<a href="/workers" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Workers</a>
+
+<a href="/bookings" class="text-gray-700 hover:text-orange-500 transition-colors duration-300">Bookings</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-28 pb-8 text-center bg-gradient-to-r from-orange-400 to-orange-500 text-white">
+    
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="flex justify-center mb-6 fade-in-up">
+            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=200" alt="Catering" class="rounded-full w-24 h-24 object-cover border-4 border-white shadow-lg">
+        </div>
+        <h1 class="text-4xl font-bold mb-4 fade-in-up delay-100">Hire Catering Workers</h1>
+        <p class="text-lg fade-in-up delay-200">Find professional staff for your events in minutes</p>
+    </div>
+    
+</section>
+
+<!-- Decorative floating elements -->
+<div class="relative">
+    <div class="absolute -top-20 left-10 float-animation opacity-30">
+        <span class="text-6xl">🍕</span>
+    </div>
+    <div class="absolute -top-10 right-20 float-animation opacity-30" style="animation-delay: 1s;">
+        <span class="text-5xl">🎂</span>
+    </div>
+</div>
+
+<section class="flex justify-center items-center min-h-screen py-12">
+
+<div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-lg card-hover fade-in-up">
+
+<div class="text-center mb-8">
+    <div class="inline-block p-4 bg-orange-100 rounded-full mb-4">
+        <span class="text-4xl">📋</span>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-800">
+        Book Catering Staff
+    </h2>
+    <p class="text-gray-500 mt-2">Fill in your requirements below</p>
+</div>
+
+<form method="POST" class="space-y-5">
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Your Name</label>
+    <input type="text" name="client" placeholder="Enter your name"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+    required>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+    <input type="text" name="phone" placeholder="Your phone number"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+    required>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Event Location</label>
+    <input type="text" name="location" placeholder="Where is the event?"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Workers Needed</label>
+    <div class="relative">
+        <input type="number" name="workers" placeholder="How many workers?"
+        class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+        <span class="absolute right-4 top-4 text-gray-400">👨‍🍳</span>
+    </div>
+</div>
+
+<div class="relative">
+    <label class="block text-gray-700 font-semibold mb-2">Event Date</label>
+    <input type="date" name="date"
+    class="input-field w-full p-4 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+</div>
+
+<button type="submit" class="submit-btn w-full bg-orange-500 text-white p-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors duration-300">
+    🚀 Submit Request
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- Why Choose Us -->
+<section class="max-w-6xl mx-auto py-12 px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Hire From Us?</h2>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 slide-in">
+            <div class="text-5xl mb-4">⏱️</div>
+            <h3 class="text-xl font-bold mb-2">Quick Response</h3>
+            <p class="text-gray-600">Get matched with workers within hours</p>
+        </div>
+        
+        <div class="text-center p-6 slide-in" style="animation-delay: 0.2s;">
+            <div class="text-5xl mb-4">✅</div>
+            <h3 class="text-xl font-bold mb-2">Verified Staff</h3>
+            <p class="text-gray-600">All workers are background checked</p>
+        </div>
+        
+        <div class="text-center p-6 slide-in" style="animation-delay: 0.4s;">
+            <div class="text-5xl mb-4">💰</div>
+            <h3 class="text-xl font-bold mb-2">Best Rates</h3>
+            <p class="text-gray-600">Competitive pricing for all events</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-900 text-gray-300 text-center py-6 mt-12">
+
+<div class="flex justify-center space-x-6 mb-4">
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">📘</a>
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">📸</a>
+    <a href="#" class="hover:text-orange-400 transition-colors duration-300 text-2xl">🐦</a>
+</div>
+
+<p>© 2026 CaterConnect | All Rights Reserved</p>
+
+</footer>
+
+</body>
+
+</html>
+
