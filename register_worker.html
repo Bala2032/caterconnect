@@ -269,6 +269,29 @@
 
 </footer>
 
+<form id="hireForm">
+  <input name="name" required>
+  <input name="email" type="email" required>
+  <input name="eventDate" type="date" required>
+  <input name="location" required>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const result = await res.json();
+  alert(result.message || result.error);
+});
+</script>
+
+
 </body>
 
 </html>
