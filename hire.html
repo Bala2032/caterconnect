@@ -242,60 +242,27 @@
 <p class="text-sm">© 2026 CaterConnect | All Rights Reserved | Chennai</p>
 
 </footer>
+<form id="hireForm">
+  <input name="name" required>
+  <input name="email" type="email" required>
+  <input name="eventDate" type="date" required>
+  <input name="location" required>
+  <button type="submit">Submit</button>
+</form>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CaterConnect Workers</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <img src="logo.png" alt="CaterConnect Logo" class="logo">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="hire.html">Hire Workers</a></li>
-        <li><a href="register_worker.html">Join as Worker</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="workers-grid" id="workersGrid">
-    <!-- Worker cards will be injected here -->
-  </section>
-
-  <script>
-    async function loadWorkers() {
-      try {
-        const res = await fetch("/api/workers");
-        const workers = await res.json();
-        const grid = document.getElementById("workersGrid");
-        grid.innerHTML = "";
-
-        workers.forEach(worker => {
-          const card = document.createElement("div");
-          card.className = "worker-card";
-          card.innerHTML = `
-            <h3>${worker.fullName}</h3>
-            <p>Skill: ${worker.skill}</p>
-            <p>Location: ${worker.location}</p>
-            <p>Experience: ${worker.experience} years</p>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    loadWorkers();
-  </script>
-</body>
-</html>
-
+<script>
+document.getElementById("hireForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  const res = await fetch("/api/hire", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const result = await res.json();
+  alert(result.message || result.error);
+});
+</script>
 
 </body>
 
