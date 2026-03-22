@@ -1,77 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>CaterConnect - Workers</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f8f8f8;
-    }
-    header {
-      background: #ff4d4d;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 1.5em;
-    }
-    .workers-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-      overflow-y: auto;
-      max-height: 80vh;
-    }
-    .worker-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 250px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .worker-card:hover {
-      transform: scale(1.05);
-    }
-    .worker-card h3 {
-      margin: 10px 0;
-      color: #333;
-    }
-    .worker-card p {
-      margin: 5px 0;
-      color: #666;
-    }
-    .hire-btn {
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .hire-btn:hover {
-      background: #e63939;
-    }
-  </style>
+<title>Workers - CaterConnect</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Poppins', sans-serif; }
+
+.worker-card {
+transition: 0.3s;
+}
+.worker-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+</style>
+
 </head>
-<body>
-  <header>👨‍🍳 CaterConnect Workers</header>
-  <div class="workers-container">
-    <!-- Example Worker Card -->
-    <div class="worker-card">
-      <h3>Ramesh Kumar</h3>
-      <p>🍴 Catering Professional</p>
-      <p>📱 +91 9876543210</p>
-      <p>📍 Chennai</p>
-      <p>💼 5 Years Experience</p>
-      <button class="hire-btn">Hire Now</button>
-    </div>
-    <!-- Repeat cards dynamically with your backend loop -->
-  </div>
+
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
+
+<nav class="bg-white shadow-md">
+
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+
+<h1 class="text-2xl font-bold text-orange-500">🍽️ CaterConnect</h1>
+
+<div class="space-x-6">
+
+<a href="/" class="hover:text-orange-500">Home</a>
+<a href="/hire" class="hover:text-orange-500">Hire Workers</a>
+<a href="/register_worker" class="hover:text-orange-500">Join as Worker</a>
+<a href="/workers" class="hover:text-orange-500">Workers</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HEADER -->
+
+<section class="text-center py-16 bg-orange-500 text-white">
+
+<h1 class="text-4xl font-bold">Registered Workers</h1>
+<p class="mt-2">Our catering professionals</p>
+
+</section>
+
+<!-- WORKERS -->
+
+<div class="max-w-6xl mx-auto py-12 px-6">
+
+{% if workers %}
+
+<div class="grid md:grid-cols-3 gap-8">
+
+{% for worker in workers %}
+
+<div class="worker-card bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-xl font-bold">{{worker[1]}}</h3>
+
+<p class="mt-2">📱 {{worker[2]}}</p>
+<p>📍 {{worker[3]}}</p>
+<p>💼 {{worker[4]}}</p>
+
+<a href="/hire" class="block mt-4 text-center bg-orange-500 text-white py-2 rounded">
+Hire Now
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="text-center py-16">
+
+<h2 class="text-2xl font-bold">No Workers Yet</h2>
+<p class="mt-2">Be the first to register</p>
+
+<a href="/register_worker" class="inline-block mt-4 bg-orange-500 text-white px-6 py-3 rounded">
+Join Now
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
 </body>
 </html>
