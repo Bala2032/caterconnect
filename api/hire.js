@@ -1,19 +1,20 @@
-// api/hire.js
-import connectDB from "../db.js";
-import Hire from "../models/Hire.js";
+import clientPromise from "../db.js";
 
 export default async function handler(req, res) {
-  await connectDB();
+  try {
+    const client = await clientPromise;
+    const db = client.db("caterconnect"); // replace with your DB name
+    const workers = db.collection("workers");
 
-  if (req.method === "POST") {
-    try {
-      const hire = new Hire(req.body);
-      await hire.save();
-      res.status(201).json({ message: "Hire request saved!" });
-    } catch (err) {
-      res.status(400).json({ error: err.message });
+    if (req.method === "GET") {
+      const data = await workers.find({}).toArray();
+      res.status(200).json(data);
+    } else if (req.method === "POST") {
+      const newWorker = req.body;
+      await workers.insertOne(newWorker);
+      res.status(201).json({ message: "Worker added successfully" });
     }
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 }
