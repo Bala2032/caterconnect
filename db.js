@@ -1,13 +1,25 @@
 // db.js
-import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 
-const connectDB = async () => {
-  if (mongoose.connection.readyState >= 1) return;
+const uri = process.env.MONGODB_URI; // set in Vercel
+let client;
+let clientPromise;
 
-  await mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-};
+if (!process.env.MONGODB_URI) {
+  throw new Error("Please add MONGODB_URI to your environment variables");
+}
 
-export default connectDB;
+if (process.env.NODE_ENV === "development") {
+  // In dev, use a global variable so we don’t create multiple clients
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri);
+    global._mongoClientPromise = client.connect();
+  }
+  clientPromise = global._mongoClientPromise;
+} else {
+  // In production, create a new client
+  client = new MongoClient(uri);
+  clientPromise = client.connect();
+}
+
+export default clientPromise;
