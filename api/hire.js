@@ -3,7 +3,7 @@ import clientPromise from "../db.js";
 export default async function handler(req, res) {
   try {
     const client = await clientPromise;
-    const db = client.db("caterconnect"); // replace with your DB name
+    const db = client.db("sample_mflix"); 
     const workers = db.collection("workers");
 
     if (req.method === "GET") {
